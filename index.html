@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/table-prettier.css" />
+
+    <!-- Primary Meta Tags -->
+    <title>#LeagueChecker</title>
+    <meta name="title" content="#LeagueChecker" />
+    <meta
+      name="description"
+      content="LeagueChecker is a best tool to checker league of legends accounts."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lol.hydranetwork.org/" />
+    <meta property="og:title" content="#LeagueChecker" />
+    <meta
+      property="og:description"
+      content="LeagueChecker is a best tool to checker league of legends accounts."
+    />
+    <meta property="og:image" content="https://i.imgur.com/azwiLDV.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://lol.hydranetwork.org/" />
+    <meta property="twitter:title" content="#LeagueChecker" />
+    <meta
+      property="twitter:description"
+      content="LeagueChecker is a best tool to checker league of legends accounts."
+    />
+    <meta property="twitter:image" content="https://i.imgur.com/azwiLDV.png" />
+  </head>
+  <body>
+    <main class="container-fluid">
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-grey-100">
+            <div class="modal-header">
+              <h5 class="modal-title mx-auto" id="exampleModalLabel">
+                #LeagueChecker
+              </h5>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">You are using the free version.</p>
+              <p class="text-center">
+                <small
+                  >A new paid version with many features will be available
+                  soon.</small
+                >
+              </p>
+            </div>
+            <div class="modal-footer flex-nowrap">
+              <a href="https://discord.gg/Qem9R9Kczj" _target="_blank">
+                <button
+                  type="button"
+                  class="font-bold bg-purple br-4 ptb-16 w-230"
+                >
+                  Discord
+                </button>
+              </a>
+              <button
+                type="button"
+                class="font-bold bg-purple br-4 ptb-16 w-230 bg-transparent border-purple"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="changeNickModal"
+        tabindex="-1"
+        aria-labelledby="changeNickModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-grey-100">
+            <div class="modal-header">
+              <h5 class="modal-title mx-auto" id="changeNickModalLabel">
+                Change Nickname
+              </h5>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">You are changing the nickname of:</p>
+              <p class="text-center" id="userAccount">-</p>
+              <label for="newNick" class="mb-4">New nickname</label>
+              <input
+                class="bg-grey-200 p-16 br-4 w-100"
+                type="text"
+                name="newNick"
+                id="newNick"
+                placeholder="Ex: cookinho"
+              />
+              <div class="mt-16">
+                <span class="mr-8">Use RP: </span>
+                <label class="switch">
+                  <input id="changeNickSwitch" type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer flex-nowrap">
+              <button
+                type="button"
+                class="font-bold bg-purple br-4 ptb-16 w-230"
+                id="changeNickButton"
+              >
+                Change
+              </button>
+              <button
+                type="button"
+                class="font-bold bg-purple br-4 ptb-16 w-230 bg-transparent border-purple"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mtb-24">
+        <img src="./assets/img/logo.svg" alt="Hydra Logo" class="top-logo" />
+      </div>
+      <div class="container-md">
+        <div class="d-flex">
+          <div class="bg-grey-100 p-16 br-4 w-75 position-relative">
+            <h1 class="font-16 text-center">Information</h1>
+            <hr />
+            <div class="d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center">
+                <label for="checkerKey" class="mb-8">CHECKER KEY</label>
+                <p
+                  class="font-bold border-purple bg-transparent ptb-1 w-1 br-4 mr-24 p-16 ptb-8 cursor-pointer"
+                  id="saveKey"
+                >
+                  Save key
+                </p>
+              </div>
+              <input
+                class="keyInput bg-grey-200 p-16 br-4"
+                type="text"
+                name="checkerKey"
+                id="checkerKey"
+                placeholder="Ex: nHvI97a14FUjkBEq2csPTLiZ5718"
+              />
+            </div>
+            <div class="mt-24 d-flex justify-content-between">
+              <p class="text-bottom">
+                <span class="font-bold" id="approvedCount">0</span> Approved
+                <span class="font-bold" id="totalCount">0</span> Checked.
+              </p>
+              <div>
+                <p id="checkerStatus">Status: stopped</p>
+                <span class="mr-8">Bancheck:</span>
+                <label class="switch">
+                  <input id="banCheckSwitch" type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="position-absolute bottom-0 mb-16 w-100">
+              <div class="d-flex align-items-center justify-content-between">
+                <button
+                  id="startChecker"
+                  class="font-bold bg-purple br-4 ptb-16 w-230"
+                >
+                  Start
+                </button>
+                <button
+                  id="clearDuplicatedLines"
+                  class="font-bold border-purple bg-transparent ptb-16 w-230 br-4 mr-24"
+                  style="margin-right: 35px"
+                >
+                  Clean duplicates
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-grey-100 p-16 br-4 w-100 ml-24">
+            <h1 class="font-16 text-center">Account List</h1>
+            <hr />
+            <textarea
+              name=""
+              id="textArea"
+              cols="30"
+              rows="10"
+              placeholder="user:pass"
+              class="list br-4 bg-grey-200 w-100 p-16"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="bg-grey-100 mt-24 br-4">
+        <div
+          class="d-flex justify-content-between ptb-8 prl-16 align-items-center"
+        >
+          <div class="bg-dark-green p-24 br-4" id="approvedCountDiv">0</div>
+          <h1 class="font-20">Success</h1>
+          <button
+            id="hideLivesTable"
+            class="font-bold bg-purple br-4 ptb-16 w-230"
+          >
+            Hide
+          </button>
+        </div>
+        <div class="d-flex align-items-center pb-16">
+          <div
+            class="bg-grey-300 p-16 d-flex align-items-center cursor-pointer br-4 mr-4"
+            id="copyAllApprovedAccounts"
+          >
+            <i class="material-icons-two-tone icon-white">group</i>
+            <span class="ml-8">Copy (user:pass)</span>
+          </div>
+          <div
+            class="bg-grey-300 p-16 d-flex align-items-center cursor-pointer br-4 mr-4"
+            id="copyAllApprovedAccountsComplete"
+          >
+            <i class="material-icons-two-tone icon-white">content_copy</i>
+            <span class="ml-8">Copy (all information)</span>
+          </div>
+          <div
+            class="bg-grey-300 p-16 d-flex align-items-center cursor-pointer br-4"
+            id="clearApprovedAccounts"
+          >
+            <i class="material-icons-two-tone icon-white">delete</i>
+            <span class="ml-8">Clear</span>
+          </div>
+        </div>
+        <div id="liveTable" class="table100 ver3 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1">Account</th>
+                  <th class="cell100 column2">Nickname</th>
+                  <th class="cell100 column3 cursor-pointer">Level</th>
+                  <th class="cell100 column4 cursor-pointer">RP</th>
+                  <th class="cell100 column5 cursor-pointer">BE</th>
+                  <th class="cell100 column6 cursor-pointer">Champs</th>
+
+                  <th class="cell100 column7 cursor-pointer">Skins</th>
+                  <th class="cell100 column8 cursor-pointer">Refunds</th>
+                  <th class="cell100 column9 cursor-pointer">Email Verified</th>
+                  <th class="cell100 column11">Last Match</th>
+                  <th class="cell100 column12">Elo</th>
+                  <th class="cell100 column13">Old Elo</th>
+                  <th class="cell100 column14">Region</th>
+                  <th class="cell100 column15">
+                    <i class="material-icons font-14">warning</i>
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="mb-24">
+            <div class="table100-body js-pscroll ps ps--active-y">
+              <table>
+                <tbody id="livesTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-grey-100 mt-24 mb-24 br-4">
+        <div
+          class="d-flex justify-content-between ptb-8 prl-16 align-items-center"
+        >
+          <div class="bg-red p-24 br-4" id="rejectedCountDiv">0</div>
+          <h1 class="font-20">Error</h1>
+          <button
+            id="hideDieTable"
+            class="font-bold bg-purple br-4 ptb-16 w-230"
+          >
+            Hide
+          </button>
+        </div>
+        <div id="dieTable" class="table100 ver3 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1">Status</th>
+                  <th class="cell100 column2">Account</th>
+                  <th class="cell100 column3">Message</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="mb-24">
+            <div class="table100-body js-pscroll ps ps--active-y">
+              <table>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="./assets/js/checker.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
