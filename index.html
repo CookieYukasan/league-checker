@@ -54,7 +54,28 @@
       content="LeagueChecker is a best tool to checker league of legends accounts."
     />
     <meta property="twitter:image" content="https://i.imgur.com/azwiLDV.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
+  <style>
+    @keyframes gravity {
+      0% {
+        transform: translateY(-10px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .top-logo {
+      animation: gravity infinite 2s;
+    }
+  </style>
   <body>
     <main class="container-fluid">
       <div
@@ -153,7 +174,7 @@
           </div>
         </div>
       </div>
-      <div class="text-center mtb-24">
+      <div class="text-center mtb-24 animate__animated animate__flip">
         <img src="./assets/img/logo.svg" alt="Hydra Logo" class="top-logo" />
       </div>
       <div class="container-md">

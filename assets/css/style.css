@@ -288,3 +288,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+input[type="radio"]:checked {
+  accent-color: var(--purple);
+}

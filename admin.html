@@ -16,16 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-      defer
-    ></script>
+
     <!-- Primary Meta Tags -->
     <title>Active your key</title>
     <meta name="title" content="#LeagueChecker" />
@@ -57,34 +48,77 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script src="assets/js/admin.js" defer></script>
   </head>
-  <script src="assets/js/active.js" defer></script>
+  <style>
+    @keyframes gravity {
+      0% {
+        transform: translateY(-10px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .hydra-logo {
+      animation: gravity infinite 2s;
+    }
+
+    .divider {
+      border-left: 2px solid var(--grey-200);
+      height: 200px;
+    }
+  </style>
   <body>
     <main
       class="container-md d-flex align-items-center flex-column justify-content-center vh-100"
     >
-      <div class="text-center animate__animated animate__flip">
-        <img src="./assets/img/logo.svg" alt="Hydra Logo" class="top-logo" />
+      <div class="text-center mb-24 animate__animated animate__flip">
+        <img
+          src="./assets/img/logo.svg"
+          alt="Hydra Logo"
+          height="200px"
+          width="200px"
+          class="hydra-logo"
+        />
       </div>
-      <h1 class="text-center animate__animated animate__flipInX">
-        Active your key
-      </h1>
       <form class="d-flex flex-column w-50 text-center mx-auto">
-        <label for="activeKey" class="mb-24 animate__animated animate__flipInX"
-          >Please enter your key to active your account.</label
-        >
+        <div class="mb-16 d-flex mx-auto">
+          <div class="animate__animated animate__flipInX mr-16">
+            <input type="radio" name="inputDays" id="03DAYS" />
+            <label for="03DAYS">03 DAYS</label>
+          </div>
+          <div class="animate__animated animate__flipInX mr-16">
+            <input type="radio" name="inputDays" id="05DAYS" />
+            <label for="05DAYS">05 DAYS</label>
+          </div>
+          <div class="animate__animated animate__flipInX">
+            <input type="radio" name="inputDays" id="07DAYS" />
+            <label for="07DAYS">07 DAYS</label>
+          </div>
+        </div>
         <input
           class="bg-grey-200 p-16 br-4 mb-24 animate__animated animate__flipInX"
           type="text"
-          name="activeKey"
-          id="activeKey"
-          placeholder="Ex: 6Ivsu9fRF05Q7mjWyW6mkV"
+          name="accessKey"
+          id="accessKey"
+          placeholder="Enter access key"
+        />
+        <input
+          class="bg-grey-200 p-16 br-4 mb-24 animate__animated animate__flipInX"
+          type="text"
+          name="secretKey"
+          id="secretKey"
+          placeholder="Enter secret key"
         />
         <button
-          type="submit"
+          type="button"
           class="font-bold bg-purple br-4 ptb-16 w-50 mx-auto animate__animated animate__flipInX"
         >
-          Active
+          Confirm
         </button>
       </form>
     </main>
