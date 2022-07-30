@@ -74,18 +74,23 @@ class Checker {
     this.beforeStart();
     this.isStarted = true;
 
-    await Promise.all(
-      this.list.map(async (account) => {
+    for (let i = 0; i < this.list.length; i++) {
+      setTimeout(async () => {
+        const account = this.list[i];
         const [username, password] = account.split(":");
         if (!username || !password) return;
         const data = await this.checkAccount(username, password);
         const tableType = data.status ? "live" : "die";
         if (tableType === "live") this.afterLive(data);
         if (tableType === "die") this.afterDie(data);
-      })
-    );
 
-    this.afterFinish();
+        if (i === this.list.length - 1) {
+          this.afterFinish();
+        }
+      }, i * 220);
+    }
+
+    // this.afterFinish();
   }
 
   afterDie(data) {
@@ -207,14 +212,14 @@ class Checker {
 
   async checkAccount(username, password) {
     const banCheck = this.banCheck ? 1 : 0;
-    const encodedUrl = encodeURI(
-      `${this.checkerUrl}/api.php?type=CHECKER&bancheck=${banCheck}&key=${this.key}&login=${username}:${password}`
-    );
-    console.log(encodedUrl);
-    const data = await fetch(encodedUrl, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }).then((res) => res.json());
+    const encodedAccount = encodeURIComponent(`${username}:${password}`);
+    const data = await fetch(
+      `${this.checkerUrl}/api.php?type=CHECKER&bancheck=${banCheck}&key=${this.key}&login=${encodedAccount}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    ).then((res) => res.json());
 
     return {
       ...data,
@@ -228,8 +233,9 @@ class Checker {
   }
 
   async changeAccountNickname(account, newNickname, currency = "RP") {
+    const encodedAccount = encodeURIComponent(account);
     const data = await fetch(
-      `${this.checkerUrl}/api.php?type=CHANGENICK&login=${account}&bancheck=1&key=${this.key}&changenick=${newNickname}&currency=${currency}`
+      `${this.checkerUrl}/api.php?type=CHANGENICK&login=${encodedAccount}&bancheck=1&key=${this.key}&changenick=${newNickname}&currency=${currency}`
     );
     return data.status;
   }
