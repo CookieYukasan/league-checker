@@ -9,10 +9,11 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.hydranetwork.org/assets/css/style.css"
-    />
+    /> -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -88,7 +89,84 @@
           class="hydra-logo"
         />
       </div>
-      <form class="d-flex flex-column w-50 text-center mx-auto">
+      <div class="container-md">
+        <div class="d-flex">
+          <div
+            class="bg-grey-100 p-16 br-4 w-75 position-relative"
+            style="min-width: 520px"
+          >
+            <h1 class="font-16 text-center">HydraNetwork Key Manager</h1>
+            <hr />
+            <div class="d-flex flex-column">
+              <input
+                class="keyInput bg-grey-200 p-16 br-4"
+                type="text"
+                name="secretKey"
+                id="secretKey"
+                placeholder="Enter your secret key here"
+              />
+              <div class="d-flex justify-content-between">
+                <select
+                  class="bg-grey-200 br-4 p-8 mt-16 font-14"
+                  name="keyTime"
+                  id="keyTime"
+                >
+                  <option value="" selected disabled>Enter the key time</option>
+                  <option value="lifetime">Lifetime</option>
+                  <option value="03DAYS">03DAYS</option>
+                  <option value="07DAYS">07DAYS</option>
+                  <option value="30DAYS">30DAYS</option>
+                </select>
+                <select
+                  class="bg-grey-200 br-4 p-8 mt-16 font-14"
+                  name="keyRole"
+                  id="keyRole"
+                >
+                  <option value="" selected disabled>Enter the key role</option>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              <select
+                class="bg-grey-200 br-4 p-8 mt-16 font-14"
+                name="keyServer"
+                id="keyServer"
+              >
+                <option value="" selected disabled>Enter the key server</option>
+                <option value="HNAUTH">HNAUTH</option>
+                <option value="LEAGUECHECKER">LEAGUECHECKER</option>
+              </select>
+            </div>
+            <div class="position-absolute bottom-0 mb-16 w-100">
+              <div class="d-flex align-items-center justify-content-between">
+                <button class="font-bold bg-purple br-4 ptb-16 w-230">
+                  Add
+                </button>
+                <button
+                  id="clearDuplicatedLines"
+                  class="font-bold border-purple bg-transparent ptb-16 w-230 br-4 mr-24"
+                  style="margin-right: 35px"
+                >
+                  Clean duplicates
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-grey-100 p-16 br-4 w-100 ml-24">
+            <h1 class="font-16 text-center">Key Notes</h1>
+            <hr />
+            <textarea
+              name=""
+              id="textArea"
+              cols="30"
+              rows="10"
+              placeholder="Enter your notes here (optional)"
+              class="list br-4 bg-grey-200 w-100 p-16"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- <form class="d-flex flex-column w-50 text-center mx-auto">
         <div class="mb-16 d-flex mx-auto">
           <div class="animate__animated animate__flipInX mr-16">
             <input type="radio" name="inputDays" id="03DAYS" />
@@ -116,7 +194,7 @@
         >
           Confirm
         </button>
-      </form>
+      </form> -->
     </main>
   </body>
 </html>

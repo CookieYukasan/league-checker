@@ -292,3 +292,11 @@ input:checked + .slider:before {
 input[type="radio"]:checked {
   accent-color: var(--purple);
 }
+
+.p-8 {
+  padding: 8px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
