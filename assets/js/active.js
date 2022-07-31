@@ -5,7 +5,7 @@ const submitButton = document.querySelector("button[type=submit]");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const key = keyInput.value;
-  const url = `https://api.hydranetwork.org/auth/?type=activatekey&mdkey=${key}`;
+  const url = `https://api.hydranetwork.org/auth/?type=activatekey&mdkey=${key}&hcaptcha=${hcaptcha.getResponse()}`;
 
   submitButton.disabled = true;
   submitButton.innerHTML = `<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
@@ -25,6 +25,7 @@ form.addEventListener("submit", (e) => {
         },
       }).showToast();
 
+      hcaptcha.reset();
       submitButton.innerHTML = "Active";
       submitButton.disabled = false;
     });
