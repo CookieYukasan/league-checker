@@ -51,7 +51,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script src="./main.js" defer></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+      defer
+    ></script>
   </head>
   <style>
     @keyframes gravity {
@@ -76,6 +92,113 @@
     }
   </style>
   <body>
+    <div
+      class="modal fade"
+      id="deleteKeyModal"
+      tabindex="-1"
+      aria-labelledby="deleteKeyModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-grey-100">
+          <div class="modal-header">
+            <h5 class="modal-title mx-auto" id="deleteKeyModalLabel">
+              Delete key
+            </h5>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">Please type the key below to delete it:</p>
+            <input
+              class="bg-grey-200 p-16 br-4 w-100"
+              type="text"
+              name="deleteKey"
+              id="deleteKey"
+              placeholder="Ex: cookinho"
+            />
+            <div class="mt-16">
+              <label class="switch">
+                <input id="deleteKeySwitch" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+              <span class="ml-8"
+                >I confirm that I want to delete this key
+              </span>
+            </div>
+          </div>
+          <div class="modal-footer flex-nowrap">
+            <button
+              type="button"
+              class="font-bold bg-purple br-4 ptb-16 w-230"
+              id="deleteKey"
+              disabled
+            >
+              Delete key
+            </button>
+            <button
+              type="button"
+              class="font-bold bg-purple br-4 ptb-16 w-230 bg-transparent border-purple"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="successCreatedKey"
+      tabindex="-1"
+      aria-labelledby="successCreatedKeyModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-grey-100">
+          <div class="modal-header">
+            <h5 class="modal-title mx-auto" id="successCreatedKeyModalLabel">
+              Key Information
+            </h5>
+          </div>
+          <div class="modal-body">
+            <label for="yourKey" class="mb-4">Your key:</label>
+            <input
+              class="bg-grey-200 p-16 br-4 w-100"
+              type="text"
+              name="yourKey"
+              id="yourKey"
+              value=""
+              disabled
+            />
+
+            <label for="yourKeyTime" class="mb-4 mt-24">Key Time:</label>
+            <input
+              class="bg-grey-200 p-16 br-4 w-100"
+              type="text"
+              name="yourKeyTime"
+              id="yourKeyTime"
+              value=""
+              disabled
+            />
+          </div>
+          <div class="modal-footer flex-nowrap">
+            <button
+              type="button"
+              class="font-bold bg-purple br-4 ptb-16 w-230"
+              id="copyKey"
+            >
+              Copy key
+            </button>
+            <button
+              type="button"
+              class="font-bold bg-purple br-4 ptb-16 w-230 bg-transparent border-purple"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <main
       class="container-md d-flex align-items-center flex-column justify-content-center vh-100"
     >
@@ -138,8 +261,11 @@
             </div>
             <div class="position-absolute bottom-0 mb-16 w-100">
               <div class="d-flex align-items-center justify-content-between">
-                <button class="font-bold bg-purple br-4 ptb-16 w-230">
-                  Add
+                <button
+                  id="createKey"
+                  class="font-bold bg-purple br-4 ptb-16 w-230"
+                >
+                  Create key
                 </button>
                 <button
                   id="deleteKey"
@@ -156,7 +282,7 @@
             <hr />
             <textarea
               name=""
-              id="textArea"
+              id="keyNotes"
               cols="30"
               rows="10"
               placeholder="Enter your notes here (optional)"
