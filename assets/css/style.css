@@ -25,7 +25,7 @@
 
 body {
   background-color: var(--dark-blue);
-  background-image: url("../img/logo-grey.png");
+  background-image: url("https://cdn.hydranetwork.org/assets/images/logo-grey.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -191,7 +191,7 @@ body {
 textarea.list {
   resize: none;
 
-  background-image: url("../img/logo-grey.png");
+  background-image: url("https://cdn.hydranetwork.org/assets/images/logo-grey.png");
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: center;
